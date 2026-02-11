@@ -65,8 +65,8 @@ def run_edge_blend(image_path: str) -> None:
 if __name__ == "__main__":
     # change this to any image you want
     # run_edge_blend("edges/GoldenGateBridge.jpg") 
-    # run_edge_blend("edges/BushnellUniversity.jpg")
+     run_edge_blend("edges/BushnellUniversity.jpg")
     # run_edge_blend("edges/MonaLisa.jpg")
     # run_edge_blend("edges/QRCode.jpg")
-     run_edge_blend("edges/USCapitol.jpg")
+    # run_edge_blend("edges/USCapitol.jpg")
 
