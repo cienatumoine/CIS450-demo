@@ -1,0 +1,50 @@
+After a long converation with ChatGPT, I finally figured out. I started off by asking chatgpt how to stitch 8 photos instead of 3. 
+The first response was 3 things: 
+1. not all images are being passed in
+2. some images don't overlap enough
+3. images are in the wrong order
+
+SO... I was told to try SCANS mode instead, this ended up working.
+I also asked CHAT to explain every single line of code so I could get a better understanding.
+Answer: Had to see if all images were loading and if the filenames were sorted correctly.
+Answer: What parameters and methodology need to be changed in order for this to be successful?
+Answer: The camera must rotate around a single point.
+Answer: 30–50% Overlap Between Consecutive Images
+Answer: Same Exposure + Focus
+Answer: Increase Confidence Threshold
+Answer: Resize Large Images Before Stitching
+Answer: Stitch Sequentially
+Answer: Replace currwent Crop block
+Answer: Fix my flood-fill background and crop to content
+
+Here is some of the code I added:
+
+
+kernel = cv.getStructuringElement(cv.MORPH_RECT, (9, 9))
+mask = cv.morphologyEx(mask, cv.MORPH_OPEN, kernel)
+mask = cv.morphologyEx(mask, cv.MORPH_CLOSE, kernel)
+
+h, w = mask.shape[:2]
+ff = mask.copy()
+ff = cv.copyMakeBorder(ff, 1, 1, 1, 1, cv.BORDER_CONSTANT, value=0)  # avoid edge issues
+flood_mask = np.zeros((h + 2 + 2, w + 2 + 2), np.uint8)  # needs to be (H+2, W+2) for floodFill on bordered img
+
+cv.floodFill(ff, flood_mask, (0, 0), 255)
+cv.floodFill(ff, flood_mask, (w + 1, 0), 255)
+cv.floodFill(ff, flood_mask, (0, h + 1), 255)
+cv.floodFill(ff, flood_mask, (w + 1, h + 1), 255)
+
+ys, xs = np.where(content > 0)
+if len(xs) and len(ys):
+    x0, x1 = xs.min(), xs.max()
+    y0, y1 = ys.min(), ys.max()
+    pano = pano[y0:y1+1, x0:x1+1]
+
+I explain in ai-panorama.py what it does.
+
+From this point I conitued to paste my code and went through each answer one by one until error was cleared.
+After a lot of trial and error I finally got the code to working
+My indentation was broken as well which was another setback that I faced.
+I was stitching twice at one point...
+I saved the wrong variable as well...
+I pasted a few errors and all that is above is what chatgpt was telling me to fix.
