@@ -23,3 +23,8 @@ gca().plot gets current Axes from the pyplot state machine, it returns an Axes i
 Axes.plot() is an object oriented method that creates Line2D artists from the given data and styling, it returns a lisst of Line 2D objects
 Axes.add_line(line) registers a prebuilt Line2D artist with the Axes, it returns the added artist.
 When plt.plot(x,y) is called, the interface forwars the call to current Axes, if not figure exists, one is automatically created. A Line2D obj is created using x & y data. Line is added to Axes obj, Axes updates its limits. Once plt.show() is executed the Figure calls its backend renderer. Then it is displayed.
+
+# Final Project
+## Description
+
+For my final project I have decided to design to create a Sketch generator. My plan is to convert a photo into a pencil sketch. I chose to do this for my project because it is not a previous project that I've done and would love to see the result. The user will upload a photo (any image), it will process the image, looking at the shapes, edges, and details. It will focus on lines, shadows, and contours, rather than colors and textures. Output = pencil sketch!
