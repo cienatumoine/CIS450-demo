@@ -27,4 +27,4 @@ When plt.plot(x,y) is called, the interface forwars the call to current Axes, if
 # Final Project
 ## Description
 
-For my final project I have decided to design to create a Sketch generator. My plan is to convert a photo into a pencil sketch. I chose to do this for my project because it is not a previous project that I've done and would love to see the result. The user will upload a photo (any image), it will process the image, looking at the shapes, edges, and details. It will focus on lines, shadows, and contours, rather than colors and textures. Output = pencil sketch!
+For my final project I have decided to design to create a Sketch generator. My plan is to convert a photo into a pencil sketch. I chose to do this for my project because it is not a previous project that I've done and would love to see the result. The user will upload a photo (any image), it will process the image, looking at the shapes, edges, and details. It will focus on lines, shadows, and contours, rather than colors and textures. Output = pencil sketch! 
