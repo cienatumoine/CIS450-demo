@@ -31,7 +31,6 @@ For my final project I have decided to design to create a Sketch generator. My p
 
 ## Design
 
-## Design
 
 This project is currently in the prototyping phase. My goal is to create a sketch generator that converts a regular image into a pencil sketch. The program will take a user-uploaded image, detect edges, contours, and shadows, and transform the image into a grayscale sketch emphasizing lines rather than colors. I plan to use Python with OpenCV to process the image by converting it to grayscale, applying Gaussian blur, detecting edges, and using image blending techniques to create the sketch effect.
 
