@@ -28,3 +28,18 @@ When plt.plot(x,y) is called, the interface forwars the call to current Axes, if
 ## Description
 
 For my final project I have decided to design to create a Sketch generator. My plan is to convert a photo into a pencil sketch. I chose to do this for my project because it is not a previous project that I've done and would love to see the result. The user will upload a photo (any image), it will process the image, looking at the shapes, edges, and details. It will focus on lines, shadows, and contours, rather than colors and textures. Output = pencil sketch! 
+
+## Design
+
+## Design
+
+This project is currently in the prototyping phase. My goal is to create a sketch generator that converts a regular image into a pencil sketch. The program will take a user-uploaded image, detect edges, contours, and shadows, and transform the image into a grayscale sketch emphasizing lines rather than colors. I plan to use Python with OpenCV to process the image by converting it to grayscale, applying Gaussian blur, detecting edges, and using image blending techniques to create the sketch effect.
+
+To understand how to implement this, I found two online resources to learn about image processing techniques in OpenCV. These resources helped me understand how edge detection, thresholding, and image inversion work together to produce a sketch-like result.
+
+Resources used:
+- https://opencv.org/
+- https://www.geeksforgeeks.org/python/convert-image-into-sketch/
+
+
+I also used ChatGPT to help me understand how to structure the Python code, how OpenCV functions work, and how to combine multiple image filters to create the sketch effect. I asked questions about grayscale conversion, Gaussian blur, edge detection, and blending images to achieve the final sketch appearance. I will continue updating this README as the project develops.
