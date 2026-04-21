@@ -32,9 +32,9 @@ AI: Got it — you want a true pencil sketch portrait look (face-focused, soft s
 
 To get that, we should switch to a portrait-style pipeline:
 
-smooth facial tones (bilateral filter)
-strong but soft pencil blending (color dodge)
-slight facial contrast boost
+Smooth facial tones (bilateral filter)
+Strong but soft pencil blending (color dodge)
+Slight facial contrast boost
 NO noise, NO edges, NO thresholding
 
 Me: I cannot see the face, they're basically white
@@ -47,10 +47,10 @@ AI: Make strength actually powerful
 
 We’ll upgrade your generate_sketch() so strength controls:
 
-blur intensity (softness)
-edge intensity (detail amount)
-contrast (darkness)
-me: make this look more realistic
+Blur intensity (softness)
+Edge intensity (detail amount)
+Contrast (darkness)
+Me: make this look more realistic
 AI: Perfect — now we stop fighting OpenCV filters and move to a real artist-style pipeline.
 What you actually want is:
 ✏️ structure → shading → stroke simulation → paper texture
