@@ -1,29 +1,3 @@
-# CIS450-demo
-## Introduction
-This repo illustrates best practice README file generation
-## Projects
-Open-CV image processing demos
-## Resources
-  <img src="OpenCV_logo_black_.png" alt="OpenCV" width="100"/>
-
-[OpenCV](https://opencv.org)
-
-## Edge detection 
-Edge detection focuses on pixel intensity and how it sharply changes. Gaussian blur is used to modify the image by smoothing it and limiting noise. Sobel operators detect changes in vertical and horizontal directions and Thresholding filters minor edges.
-## Image Blending
-Image blending merges two images into one result. The detected edges are layereed on the orginal image. In order for this to work, both images must share the same dimensions and color format.
-
-## Instruction for HOW Plotting works
-Plt.plot(x,y): this creates a 2D line plot that connects the (x,y) points and returns a list of matplotlib.lines.Line2D objects.
-It uses the current Axes (pyplot.gca()) under the hood (pyplot.plot -> gca().plot -> Axes.plot -> Axes.add_line).
-I also learned that x and y must have the same length.  
-Below I am going to dive a little deeper into what this sequence means:
-plt.plot(x,y) is explained above
-gca().plot gets current Axes from the pyplot state machine, it returns an Axes instance
-Axes.plot() is an object oriented method that creates Line2D artists from the given data and styling, it returns a lisst of Line 2D objects
-Axes.add_line(line) registers a prebuilt Line2D artist with the Axes, it returns the added artist.
-When plt.plot(x,y) is called, the interface forwars the call to current Axes, if not figure exists, one is automatically created. A Line2D obj is created using x & y data. Line is added to Axes obj, Axes updates its limits. Once plt.show() is executed the Figure calls its backend renderer. Then it is displayed.
-
 # Final Project
 ## Description
 
@@ -53,71 +27,65 @@ During the development of this project, AI assisted with the following:
 - Explaining Docker container networking and port mapping issues
 I used AI as a learning assistant to help understand errors, improve code structure, and ensure the application runs reliably inside a Docker container.
 
-me: I need a pencil sketch generator...
+Me: I need a pencil sketch generator...
 AI: Got it — you want a true pencil sketch portrait look (face-focused, soft shading, not outlines or pixel effects).
 
 To get that, we should switch to a portrait-style pipeline:
 
-smooth facial tones (bilateral filter)
-strong but soft pencil blending (color dodge)
-slight facial contrast boost
+Smooth facial tones (bilateral filter)
+Strong but soft pencil blending (color dodge)
+Slight facial contrast boost
 NO noise, NO edges, NO thresholding
----------------------------------------------------------------------------------
-me: I cannot see the face, they're basically white
+
+Me: I cannot see the face, they're basically white
 AI: Good — that tells us exactly what’s wrong:
-
 👉 your sketch has no proper tonal inversion balance, so skin areas are blowing out to white instead of forming graphite midtones.
-
 We fix this by going back to a correct, stable pencil sketch formula + proper tone compression (no histogram equalization, no over-contrast tricks).
----------------------------------------------------------------------------------
-me: make this app to where you can adjust the strength of the control of the image
+
+Me: make this app to where you can adjust the strength of the control of the image
 AI: Make strength actually powerful
 
 We’ll upgrade your generate_sketch() so strength controls:
 
-blur intensity (softness)
-edge intensity (detail amount)
-contrast (darkness)
-----------------------------------------------------------------------------------
-me: make this look more realistic
+Blur intensity (softness)
+Edge intensity (detail amount)
+Contrast (darkness)
+Me: make this look more realistic
 AI: Perfect — now we stop fighting OpenCV filters and move to a real artist-style pipeline.
-
 What you actually want is:
-
 ✏️ structure → shading → stroke simulation → paper texture
 not edge detection or grayscale filtering.
-
 Below is a complete upgraded app.py that produces a much more hand-drawn graphite portrait look using a hybrid artist simulation pipeline.
-----------------------------------------------------------------------------------
-me: make the image a bit darker (more shading) dont make it look just black and white though
+
+Me: make the image a bit darker (more shading) dont make it look just black and white though
 AI: You don’t want “more contrast” (that causes black/white).
 You want deeper graphite mid-tones so the sketch looks shaded, not binary.
-
 Add a mid-tone darkening pass after sharpening.
----------------------------------------------------------------------------------
-me: this app.py, make an export option where the user can choose the size of the image
+
+Me: this app.py, make an export option where the user can choose the size of the image
 AI: You’re very close. The only thing missing is controlling the output resolution before saving.
 
 Right now, you always save the sketch at the original size. We’ll add:
-
 ✅ A size selector (Small / Medium / Large / Original)
 ✅ A resize step right before saving the sketch
 ✅ No extra files, still one app.py
---------------------------------------------------------------------------------
-me: i feel like i cant tell a difference in the sizes of the images
+
+Me: i feel like i cant tell a difference in the sizes of the images
 AI: Yeah—that’s because your current resizing logic is only changing width, and for many images the visual difference is subtle (especially in a browser when everything still fits on screen).
 
 Also: “640 vs 1280 vs 1920” only feels different if you actually force a visible change in pixel density or download size, not just display.
 
-Let’s fix that properly.
-------------------------------------------------------------------------------
 ## Test
 Test Case 1: Uploaded Image
 - Uploaded multiple image successfully and ran iwthout errors, I just wanted to adjust some things to make it look more realistic
+
 Test Case 2: Strength Control
 I found a way to be able to adjust the strength control of the images, this would result in darker and heavier lines, I did this because originally I couldn't see the faces that well 
+
 Test Case 3: Ran into a few PORT problems
 - There were few times the app would not run because it was not able to run on the same PORT as before but I changed to a working PORT and went back to the old PORT, it worked most of the time.
+
 Test Case 4: Added Export option
 I implemented a function that allows the user to choose the size of the image they wanted. It took me a while, I couldnt really see a difference between the sizes but with the help of AI I was able to fix it.
+
 Test 5: Everything ran successfully
